@@ -30,10 +30,7 @@ class _HomePageState extends State<HomePage> {
           mainAxisSpacing: 20,
         ),
         children: categories
-            .map((category) => Category(
-                  title: category.title,
-                  color: category.color,
-                ))
+            .map((categoryData) => Category(categoryModel: categoryData))
             .toList(),
       ),
     );
