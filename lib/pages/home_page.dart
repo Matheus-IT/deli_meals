@@ -22,6 +22,7 @@ class _HomePageState extends State<HomePage> {
         title: const Text('DeliMeals'),
       ),
       body: GridView(
+        padding: const EdgeInsets.all(20),
         gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
           maxCrossAxisExtent: 200,
           childAspectRatio: 3 / 2,

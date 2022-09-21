@@ -17,7 +17,21 @@ class MyApp extends StatelessWidget {
         title: 'DeliMeals',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
-          primarySwatch: Colors.blue,
+          primarySwatch: Colors.red,
+          canvasColor: const Color.fromRGBO(255, 254, 229, 1),
+          fontFamily: 'Raleway',
+          textTheme: ThemeData.light().textTheme.copyWith(
+                bodyText1: const TextStyle(
+                  color: Color.fromRGBO(20, 51, 51, 1),
+                ),
+                bodyText2: const TextStyle(
+                  color: Color.fromRGBO(20, 51, 51, 1),
+                ),
+                headline6: const TextStyle(
+                  fontFamily: 'RobotoCondensed',
+                  fontSize: 20,
+                ),
+              ),
         ),
         home: const HomePage(),
       ),
