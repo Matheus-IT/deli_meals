@@ -2,12 +2,13 @@ import 'package:deli_meals/models/category_model.dart';
 import 'package:flutter/material.dart';
 
 class MealsPage extends StatelessWidget {
-  final CategoryModel category;
-
-  const MealsPage({required this.category, super.key});
+  const MealsPage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final CategoryModel category =
+        ModalRoute.of(context)?.settings.arguments as CategoryModel;
+
     return Scaffold(
       appBar: AppBar(
         title: Text(category.title),

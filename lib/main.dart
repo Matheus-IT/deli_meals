@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'providers/category_provider.dart';
+import 'pages/meals_page.dart';
 import 'pages/home_page.dart';
+import 'app_routes.dart';
 
 void main() => runApp(const MyApp());
 
@@ -33,7 +35,10 @@ class MyApp extends StatelessWidget {
                 ),
               ),
         ),
-        home: const HomePage(),
+        routes: {
+          AppRoutes.homePage: (ctx) => const HomePage(),
+          AppRoutes.mealsPage: (ctx) => const MealsPage()
+        },
       ),
     );
   }

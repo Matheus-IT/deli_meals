@@ -1,6 +1,8 @@
-import 'package:deli_meals/models/category_model.dart';
-import 'package:deli_meals/pages/meals_page.dart';
 import 'package:flutter/material.dart';
+
+import '../app_routes.dart';
+import '../models/category_model.dart';
+import '../pages/meals_page.dart';
 
 class Category extends StatelessWidget {
   final CategoryModel categoryModel;
@@ -8,8 +10,9 @@ class Category extends StatelessWidget {
   const Category({required this.categoryModel, super.key});
 
   void handleCategorySelected(BuildContext ctx) {
-    Navigator.of(ctx).push(
-      MaterialPageRoute(builder: (_) => MealsPage(category: categoryModel)),
+    Navigator.of(ctx).pushNamed(
+      AppRoutes.mealsPage,
+      arguments: categoryModel,
     );
   }
 
