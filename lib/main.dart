@@ -1,3 +1,4 @@
+import 'package:deli_meals/providers/meal_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -13,8 +14,15 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider<CategoryProvider>(
-      create: (_) => CategoryProvider(),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider<CategoryProvider>(
+          create: (_) => CategoryProvider(),
+        ),
+        ChangeNotifierProvider<MealProvider>(
+          create: (_) => MealProvider(),
+        ),
+      ],
       child: MaterialApp(
         title: 'DeliMeals',
         debugShowCheckedModeBanner: false,
