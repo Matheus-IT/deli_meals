@@ -6,6 +6,25 @@ class Meal extends StatelessWidget {
 
   const Meal({required this.mealModel, super.key});
 
+  String get complexityText {
+    const readableComplexity = {
+      Complexity.Simple: 'Simple',
+      Complexity.Challenging: 'Challenging',
+      Complexity.Hard: 'Hard',
+    };
+    return readableComplexity[mealModel.complexity] ?? 'Unknown Complexity';
+  }
+
+  String get affordabilityText {
+    const readableAffordability = {
+      Affordability.Affordable: 'Affordable',
+      Affordability.Pricey: 'Pricey',
+      Affordability.Luxurious: 'Expensive',
+    };
+    return readableAffordability[mealModel.affordability] ??
+        'Unknown Affordability';
+  }
+
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -50,7 +69,36 @@ class Meal extends StatelessWidget {
                   ),
                 ),
               ],
-            )
+            ),
+            Padding(
+              padding: const EdgeInsets.all(20),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Row(
+                    children: [
+                      const Icon(Icons.schedule),
+                      const SizedBox(width: 6),
+                      Text('${mealModel.duration} min'),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      const Icon(Icons.work),
+                      const SizedBox(width: 6),
+                      Text(complexityText),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      const Icon(Icons.attach_money),
+                      const SizedBox(width: 6),
+                      Text(affordabilityText),
+                    ],
+                  ),
+                ],
+              ),
+            ),
           ],
         ),
       ),
