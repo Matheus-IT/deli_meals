@@ -1,3 +1,4 @@
+import 'package:deli_meals/components/meal.dart';
 import 'package:deli_meals/models/category_model.dart';
 import 'package:deli_meals/providers/meal_provider.dart';
 import 'package:flutter/material.dart';
@@ -21,7 +22,7 @@ class MealsPage extends StatelessWidget {
       body: Center(
         child: ListView.builder(
           itemCount: categoryMeals.length,
-          itemBuilder: (ctx, index) => Text(categoryMeals[index].title),
+          itemBuilder: (ctx, index) => Meal(mealModel: categoryMeals[index]),
         ),
       ),
     );
