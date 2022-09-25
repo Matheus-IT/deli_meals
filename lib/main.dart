@@ -49,6 +49,15 @@ class MyApp extends StatelessWidget {
           AppRoutes.mealsPage: (ctx) => const MealsPage(),
           AppRoutes.mealDetailPage: (ctx) => const MealDetailPage(),
         },
+        onGenerateRoute: (settings) {
+          // In case of going to a route that is not listed
+          debugPrint(settings.arguments.toString());
+          return MaterialPageRoute(builder: (ctx) => const HomePage());
+        },
+        onUnknownRoute: (settings) {
+          // If not listed routes and not generated routes use this as a last resource
+          return MaterialPageRoute(builder: (ctx) => const HomePage());
+        },
       ),
     );
   }
