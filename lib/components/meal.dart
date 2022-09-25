@@ -1,3 +1,4 @@
+import 'package:deli_meals/app_routes.dart';
 import 'package:deli_meals/models/meal_model.dart';
 import 'package:flutter/material.dart';
 
@@ -5,6 +6,13 @@ class Meal extends StatelessWidget {
   final MealModel mealModel;
 
   const Meal({required this.mealModel, super.key});
+
+  void handleMealTapped(BuildContext context) {
+    Navigator.of(context).pushNamed(
+      AppRoutes.mealDetailPage,
+      arguments: mealModel,
+    );
+  }
 
   String get complexityText {
     const readableComplexity = {
@@ -28,7 +36,7 @@ class Meal extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {},
+      onTap: () => handleMealTapped(context),
       child: Card(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
         elevation: 4,
