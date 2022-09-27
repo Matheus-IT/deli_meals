@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import '../app_routes.dart';
 import '../models/category_model.dart';
-import '../pages/meals_page.dart';
 
 class Category extends StatelessWidget {
   final CategoryModel categoryModel;
