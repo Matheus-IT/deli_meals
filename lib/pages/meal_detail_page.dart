@@ -1,4 +1,7 @@
+import 'package:deli_meals/components/listing_element.dart';
 import 'package:flutter/material.dart';
+import '../components/container_for_listing.dart';
+import '../components/section_title.dart';
 import '../models/meal_model.dart';
 
 class MealDetailPage extends StatelessWidget {
@@ -10,48 +13,42 @@ class MealDetailPage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(title: Text(mealModel.title)),
-      body: Column(
-        children: [
-          SizedBox(
-            height: 300,
-            width: double.infinity,
-            child: Image.network(
-              mealModel.imageUrl,
-              fit: BoxFit.cover,
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            SizedBox(
+              height: 300,
+              width: double.infinity,
+              child: Image.network(
+                mealModel.imageUrl,
+                fit: BoxFit.cover,
+              ),
             ),
-          ),
-          Container(
-            margin: const EdgeInsets.symmetric(vertical: 10),
-            child: Text(
-              'Ingredients',
-              style: Theme.of(context).textTheme.headline6,
-            ),
-          ),
-          Container(
-            height: 200,
-            width: 300,
-            margin: const EdgeInsets.all(10),
-            padding: const EdgeInsets.all(10),
-            decoration: BoxDecoration(
-              color: Colors.white,
-              border: Border.all(color: Colors.grey),
-              borderRadius: BorderRadius.circular(10),
-            ),
-            child: ListView.builder(
-              itemCount: mealModel.ingredients.length,
-              itemBuilder: (ctx, index) => Card(
-                color: Theme.of(context).colorScheme.secondary,
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(
-                    vertical: 4,
-                    horizontal: 8,
-                  ),
-                  child: Text(mealModel.ingredients[index]),
+            const SectionTitle(title: 'Ingredients'),
+            ContainerForListing(
+              child: ListView.builder(
+                itemCount: mealModel.ingredients.length,
+                itemBuilder: (ctx, index) => Card(
+                  color: Theme.of(context).colorScheme.secondary,
+                  child: ListingElement(label: mealModel.ingredients[index]),
                 ),
               ),
             ),
-          )
-        ],
+            const SectionTitle(title: 'Steps'),
+            ContainerForListing(
+              child: ListView.builder(
+                itemCount: mealModel.steps.length,
+                itemBuilder: (ctx, index) => Card(
+                  color: Theme.of(context).colorScheme.secondary,
+                  child: ListTile(
+                    leading: CircleAvatar(child: Text('# ${index + 1}')),
+                    title: Text(mealModel.steps[index]),
+                  ),
+                ),
+              ),
+            )
+          ],
+        ),
       ),
     );
   }

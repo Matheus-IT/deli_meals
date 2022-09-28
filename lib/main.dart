@@ -15,11 +15,6 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final ThemeData theme = ThemeData(
-      fontFamily: 'Raleway',
-      primarySwatch: Colors.red,
-    );
-
     return MultiProvider(
       providers: [
         ChangeNotifierProvider<CategoryProvider>(
@@ -32,8 +27,9 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         title: 'DeliMeals',
         debugShowCheckedModeBanner: false,
-        theme: theme.copyWith(
-          colorScheme: theme.colorScheme.copyWith(secondary: Colors.amber),
+        theme: ThemeData(
+          fontFamily: 'Raleway',
+          primarySwatch: Colors.red,
           canvasColor: const Color.fromRGBO(255, 254, 229, 1),
           textTheme: ThemeData.light().textTheme.copyWith(
                 bodyText1: const TextStyle(
