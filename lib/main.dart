@@ -1,4 +1,5 @@
 import 'package:deli_meals/pages/meal_detail_page.dart';
+import 'package:deli_meals/pages/tabs_page.dart';
 import 'package:deli_meals/providers/meal_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -45,7 +46,7 @@ class MyApp extends StatelessWidget {
               ),
         ),
         routes: {
-          AppRoutes.homePage: (ctx) => const HomePage(),
+          AppRoutes.homePage: (ctx) => const TabsPage(),
           AppRoutes.mealsPage: (ctx) => const MealsPage(),
           AppRoutes.mealDetailPage: (ctx) => const MealDetailPage(),
         },

@@ -17,22 +17,17 @@ class _HomePageState extends State<HomePage> {
     final provider = Provider.of<CategoryProvider>(context, listen: false);
     final categories = provider.categories;
 
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('DeliMeals'),
+    return GridView(
+      padding: const EdgeInsets.all(20),
+      gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+        maxCrossAxisExtent: 200,
+        childAspectRatio: 3 / 2,
+        crossAxisSpacing: 20,
+        mainAxisSpacing: 20,
       ),
-      body: GridView(
-        padding: const EdgeInsets.all(20),
-        gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-          maxCrossAxisExtent: 200,
-          childAspectRatio: 3 / 2,
-          crossAxisSpacing: 20,
-          mainAxisSpacing: 20,
-        ),
-        children: categories
-            .map((categoryData) => Category(categoryModel: categoryData))
-            .toList(),
-      ),
+      children: categories
+          .map((categoryData) => Category(categoryModel: categoryData))
+          .toList(),
     );
   }
 }
