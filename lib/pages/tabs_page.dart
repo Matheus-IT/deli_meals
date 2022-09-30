@@ -10,7 +10,10 @@ class TabsPage extends StatefulWidget {
 }
 
 class _TabsPageState extends State<TabsPage> {
-  List<Widget> pages = [const HomePage(), const FavoritesPage()];
+  List<Map<String, Widget>> pages = [
+    {'title': const Text('Categories'), 'page': const HomePage()},
+    {'title': const Text('Favorites'), 'page': const FavoritesPage()}
+  ];
 
   int selectedPageIndex = 0;
 
@@ -23,8 +26,8 @@ class _TabsPageState extends State<TabsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('DeliMeals')),
-      body: pages[selectedPageIndex],
+      appBar: AppBar(title: pages[selectedPageIndex]['title']),
+      body: pages[selectedPageIndex]['page'],
       bottomNavigationBar: BottomNavigationBar(
         onTap: selectPage,
         currentIndex: selectedPageIndex,
