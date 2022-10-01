@@ -1,3 +1,5 @@
+import 'package:deli_meals/app_routes.dart';
+import 'package:deli_meals/components/drawer_tile.dart';
 import 'package:flutter/material.dart';
 
 class MainDrawer extends StatelessWidget {
@@ -22,32 +24,21 @@ class MainDrawer extends StatelessWidget {
                 ),
               ),
             ),
-            const SizedBox(height: 20),
-            ListTile(
-              tileColor: Colors.red[300],
-              textColor: Colors.white,
-              iconColor: Colors.white,
-              title: const Text(
-                'Meals',
-                style: TextStyle(fontFamily: 'RobotoCondensed'),
-              ),
-              leading: const Icon(Icons.restaurant, size: 26),
-              onTap: () {},
+            DrawerTile(
+              title: 'Meals',
+              icon: Icons.restaurant,
+              onTap: () {
+                Navigator.of(context).pushReplacementNamed(AppRoutes.homePage);
+              },
             ),
-            const SizedBox(
-              height: 8,
-            ),
-            ListTile(
-              horizontalTitleGap: 10,
-              tileColor: Colors.red[300],
-              textColor: Colors.white,
-              iconColor: Colors.white,
-              title: const Text(
-                'Settings',
-                style: TextStyle(fontFamily: 'RobotoCondensed'),
-              ),
-              leading: const Icon(Icons.settings, size: 26),
-              onTap: () {},
+            const SizedBox(height: 8),
+            DrawerTile(
+              title: 'Settings',
+              icon: Icons.settings,
+              onTap: () {
+                Navigator.of(context)
+                    .pushReplacementNamed(AppRoutes.settingsPage);
+              },
             ),
           ],
         ),
