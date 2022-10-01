@@ -1,3 +1,4 @@
+import 'package:deli_meals/components/main_drawer.dart';
 import 'package:deli_meals/pages/favorites_page.dart';
 import 'package:deli_meals/pages/home_page.dart';
 import 'package:flutter/material.dart';
@@ -26,6 +27,7 @@ class _TabsPageState extends State<TabsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: const MainDrawer(),
       appBar: AppBar(title: pages[selectedPageIndex]['title']),
       body: pages[selectedPageIndex]['page'],
       bottomNavigationBar: BottomNavigationBar(
