@@ -13,6 +13,12 @@ class MealDetailPage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(title: Text(mealModel.title)),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.of(context).pop(mealModel);
+        },
+        child: const Icon(Icons.delete),
+      ),
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -46,7 +52,12 @@ class MealDetailPage extends StatelessWidget {
                   color: Theme.of(context).colorScheme.secondary,
                   child: ListTile(
                     leading: CircleAvatar(child: Text('# ${index + 1}')),
-                    title: Text(mealModel.steps[index]),
+                    title: Text(
+                      mealModel.steps[index],
+                      style: const TextStyle(
+                        color: Colors.white,
+                      ),
+                    ),
                   ),
                 ),
               ),

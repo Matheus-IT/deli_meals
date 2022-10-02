@@ -10,4 +10,9 @@ class MealProvider extends ChangeNotifier {
   List<MealModel> categoryMeals(String categoryId) {
     return meals.where((m) => m.categoryIds.contains(categoryId)).toList();
   }
+
+  void removeMeal(MealModel mealModel) {
+    _meals.remove(mealModel);
+    notifyListeners();
+  }
 }

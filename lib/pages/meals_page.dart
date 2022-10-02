@@ -12,7 +12,7 @@ class MealsPage extends StatelessWidget {
     final CategoryModel category =
         ModalRoute.of(context)?.settings.arguments as CategoryModel;
 
-    final provider = Provider.of<MealProvider>(context, listen: false);
+    final provider = Provider.of<MealProvider>(context);
     final categoryMeals = provider.categoryMeals(category.id);
 
     return Scaffold(

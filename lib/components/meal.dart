@@ -1,6 +1,8 @@
 import 'package:deli_meals/app_routes.dart';
 import 'package:deli_meals/models/meal_model.dart';
+import 'package:deli_meals/providers/meal_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class Meal extends StatelessWidget {
   final MealModel mealModel;
@@ -8,10 +10,18 @@ class Meal extends StatelessWidget {
   const Meal({required this.mealModel, super.key});
 
   void handleMealTapped(BuildContext context) {
-    Navigator.of(context).pushNamed(
+    Navigator.of(context)
+        .pushNamed(
       AppRoutes.mealDetailPage,
       arguments: mealModel,
-    );
+    )
+        .then((mealModel) {
+      debugPrint('Coming from mealDetailPage');
+      if (mealModel != null) {
+        final provider = Provider.of<MealProvider>(context, listen: false);
+        provider.removeMeal(mealModel as MealModel);
+      }
+    });
   }
 
   String get complexityText {
