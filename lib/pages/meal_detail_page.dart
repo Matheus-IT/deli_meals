@@ -27,6 +27,8 @@ class MealDetailPage extends StatelessWidget {
             const SectionTitle(title: 'Ingredients'),
             ContainerForListing(
               child: ListView.builder(
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
                 itemCount: mealModel.ingredients.length,
                 itemBuilder: (ctx, index) => Card(
                   color: Theme.of(context).colorScheme.secondary,
@@ -37,6 +39,8 @@ class MealDetailPage extends StatelessWidget {
             const SectionTitle(title: 'Steps'),
             ContainerForListing(
               child: ListView.builder(
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
                 itemCount: mealModel.steps.length,
                 itemBuilder: (ctx, index) => Card(
                   color: Theme.of(context).colorScheme.secondary,
