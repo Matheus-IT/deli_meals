@@ -20,8 +20,16 @@ class Meal extends StatelessWidget {
       if (mealModel != null) {
         final provider = Provider.of<MealProvider>(context, listen: false);
         provider.removeMeal(mealModel as MealModel);
+        _showSnackbar(context, msg: 'You deleted ${mealModel.title}');
       }
     });
+  }
+
+  void _showSnackbar(BuildContext context, {required String msg}) {
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      content: Text(msg, textAlign: TextAlign.center),
+      duration: const Duration(seconds: 2),
+    ));
   }
 
   String get complexityText {
