@@ -50,7 +50,7 @@ class MyApp extends StatelessWidget {
           AppRoutes.homePage: (ctx) => const TabsPage(),
           AppRoutes.mealsPage: (ctx) => const MealsPage(),
           AppRoutes.mealDetailPage: (ctx) => const MealDetailPage(),
-          AppRoutes.settingsPage: (ctx) => const SettingsPage(),
+          AppRoutes.settingsPage: (ctx) => SettingsPage(),
         },
         onGenerateRoute: (settings) {
           // In case of going to a route that is not listed
