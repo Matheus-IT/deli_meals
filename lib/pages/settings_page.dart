@@ -1,3 +1,4 @@
+import 'package:deli_meals/components/settings_switch_tile.dart';
 import 'package:flutter/material.dart';
 
 class SettingsPage extends StatefulWidget {
@@ -20,23 +21,49 @@ class _SettingsPageState extends State<SettingsPage> {
         child: Column(
           children: [
             Container(
+              margin: const EdgeInsets.symmetric(vertical: 16),
               child: Text(
                 'Adjust your meal selection',
-                style: Theme.of(context).textTheme.headline6,
+                style: Theme.of(context)
+                    .textTheme
+                    .headline6
+                    ?.copyWith(fontSize: 24),
               ),
             ),
             Expanded(
                 child: ListView(
               children: [
-                SwitchListTile(
-                  title: const Text('Gluten-Free'),
-                  subtitle: const Text('Only include gluten free meals'),
-                  onChanged: (newValue) {
-                    setState(() {
-                      _glutenFree = newValue;
-                    });
+                SettingsSwitchTile(
+                  title: 'Gluten-Free',
+                  subtitle: 'Only include gluten free meals',
+                  handleUpdateValue: (newValue) {
+                    setState(() => _glutenFree = newValue);
                   },
-                  value: _glutenFree,
+                  currentValue: _glutenFree,
+                ),
+                SettingsSwitchTile(
+                  title: 'Lactose-Free',
+                  subtitle: 'Only include lactose free meals',
+                  handleUpdateValue: (newValue) {
+                    setState(() => _lactoseFree = newValue);
+                  },
+                  currentValue: _lactoseFree,
+                ),
+                SettingsSwitchTile(
+                  title: 'Vegetarian-Free',
+                  subtitle: 'Only include vegetarian free meals',
+                  handleUpdateValue: (newValue) {
+                    setState(() => _vegetarian = newValue);
+                  },
+                  currentValue: _vegetarian,
+                ),
+                SettingsSwitchTile(
+                  title: 'Vegan-Free',
+                  subtitle: 'Only include vegan free meals',
+                  handleUpdateValue: (newValue) {
+                    setState(() => _vegan = newValue);
+                  },
+                  currentValue: _vegan,
                 ),
               ],
             ))
