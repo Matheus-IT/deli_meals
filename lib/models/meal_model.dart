@@ -16,6 +16,7 @@ class MealModel {
   final bool isLactoseFree;
   final bool isVegan;
   final bool isVegetarian;
+  bool isFavorite;
 
   MealModel({
     required this.id,
@@ -31,5 +32,10 @@ class MealModel {
     required this.isLactoseFree,
     required this.isVegan,
     required this.isVegetarian,
+    required this.isFavorite,
   });
+
+  void toggleFavorite() {
+    isFavorite = !isFavorite;
+  }
 }

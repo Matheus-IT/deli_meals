@@ -57,6 +57,7 @@ final List<CategoryModel> dummyCategories = [
 
 final List<MealModel> dummyMeals = [
   MealModel(
+    isFavorite: false,
     id: 'm1',
     categoryIds: [
       'c1',
@@ -91,6 +92,7 @@ final List<MealModel> dummyMeals = [
     isLactoseFree: true,
   ),
   MealModel(
+    isFavorite: false,
     id: 'm2',
     categoryIds: [
       'c2',
@@ -119,6 +121,7 @@ final List<MealModel> dummyMeals = [
     isLactoseFree: false,
   ),
   MealModel(
+    isFavorite: false,
     id: 'm3',
     categoryIds: [
       'c2',
@@ -151,6 +154,7 @@ final List<MealModel> dummyMeals = [
     isLactoseFree: true,
   ),
   MealModel(
+    isFavorite: false,
     id: 'm4',
     categoryIds: [
       'c4',
@@ -186,6 +190,7 @@ final List<MealModel> dummyMeals = [
     isLactoseFree: false,
   ),
   MealModel(
+    isFavorite: false,
     id: 'm5',
     categoryIds: [
       'c2'
@@ -222,6 +227,7 @@ final List<MealModel> dummyMeals = [
     isLactoseFree: true,
   ),
   MealModel(
+    isFavorite: false,
     id: 'm6',
     categoryIds: [
       'c6',
@@ -258,6 +264,7 @@ final List<MealModel> dummyMeals = [
     isLactoseFree: false,
   ),
   MealModel(
+    isFavorite: false,
     id: 'm7',
     categoryIds: [
       'c7',
@@ -289,6 +296,7 @@ final List<MealModel> dummyMeals = [
     isLactoseFree: false,
   ),
   MealModel(
+    isFavorite: false,
     id: 'm8',
     categoryIds: [
       'c8',
@@ -322,6 +330,7 @@ final List<MealModel> dummyMeals = [
     isLactoseFree: true,
   ),
   MealModel(
+    isFavorite: false,
     id: 'm9',
     categoryIds: [
       'c9',
@@ -371,6 +380,7 @@ final List<MealModel> dummyMeals = [
     isLactoseFree: false,
   ),
   MealModel(
+    isFavorite: false,
     id: 'm10',
     categoryIds: [
       'c2',

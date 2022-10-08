@@ -4,9 +4,14 @@ import '../components/container_for_listing.dart';
 import '../components/section_title.dart';
 import '../models/meal_model.dart';
 
-class MealDetailPage extends StatelessWidget {
+class MealDetailPage extends StatefulWidget {
   const MealDetailPage({super.key});
 
+  @override
+  State<MealDetailPage> createState() => _MealDetailPageState();
+}
+
+class _MealDetailPageState extends State<MealDetailPage> {
   @override
   Widget build(BuildContext context) {
     final mealModel = ModalRoute.of(context)?.settings.arguments as MealModel;
@@ -15,9 +20,11 @@ class MealDetailPage extends StatelessWidget {
       appBar: AppBar(title: Text(mealModel.title)),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Navigator.of(context).pop(mealModel);
+          setState(() => mealModel.toggleFavorite());
         },
-        child: const Icon(Icons.delete),
+        child: Icon(mealModel.isFavorite
+            ? Icons.favorite_rounded
+            : Icons.favorite_outline_rounded),
       ),
       body: SingleChildScrollView(
         child: Column(
