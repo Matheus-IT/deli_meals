@@ -1,8 +1,11 @@
+import 'package:deli_meals/components/main_drawer.dart';
 import 'package:deli_meals/components/settings_switch_tile.dart';
 import 'package:flutter/material.dart';
 
 class SettingsPage extends StatefulWidget {
-  SettingsPage({super.key});
+  final void Function(Map<String, bool>) handleSaveSettings;
+
+  const SettingsPage({required this.handleSaveSettings, super.key});
 
   @override
   State<SettingsPage> createState() => _SettingsPageState();
@@ -17,6 +20,15 @@ class _SettingsPageState extends State<SettingsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text('Your settings'),
+        actions: [
+          IconButton(
+              onPressed: widget.handleSaveSettings,
+              icon: const Icon(Icons.save))
+        ],
+      ),
+      drawer: const MainDrawer(),
       body: SafeArea(
         child: Column(
           children: [

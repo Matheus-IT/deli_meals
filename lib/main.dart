@@ -12,11 +12,27 @@ import 'app_routes.dart';
 
 void main() => runApp(const MyApp());
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
   @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  @override
   Widget build(BuildContext context) {
+    Map<String, bool> _filters = {
+      'gluten': false,
+      'lactose': false,
+      'vegan': false,
+      'vegetarian': false,
+    };
+
+    void setFilters(Map<String, bool> filtersData) {
+      setState(() => _filters = filtersData);
+    }
+
     return MultiProvider(
       providers: [
         ChangeNotifierProvider<CategoryProvider>(
@@ -50,7 +66,9 @@ class MyApp extends StatelessWidget {
           AppRoutes.homePage: (ctx) => const TabsPage(),
           AppRoutes.mealsPage: (ctx) => const MealsPage(),
           AppRoutes.mealDetailPage: (ctx) => const MealDetailPage(),
-          AppRoutes.settingsPage: (ctx) => SettingsPage(),
+          AppRoutes.settingsPage: (ctx) => SettingsPage(
+                handleSaveSettings: setFilters,
+              ),
         },
         onGenerateRoute: (settings) {
           // In case of going to a route that is not listed
