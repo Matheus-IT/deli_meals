@@ -13,10 +13,13 @@ class FavoritesPage extends StatelessWidget {
         mealsProvider.meals.where((meal) => meal.isFavorite).toList();
 
     return Center(
-      child: ListView.builder(
-        itemCount: favoriteMeals.length,
-        itemBuilder: (ctx, index) => Meal(mealModel: favoriteMeals[index]),
-      ),
+      child: favoriteMeals.isEmpty
+          ? const Text('No favorites yet...')
+          : ListView.builder(
+              itemCount: favoriteMeals.length,
+              itemBuilder: (ctx, index) =>
+                  Meal(mealModel: favoriteMeals[index]),
+            ),
     );
   }
 }
