@@ -2,6 +2,7 @@ import 'package:deli_meals/pages/meal_detail_page.dart';
 import 'package:deli_meals/pages/settings_page.dart';
 import 'package:deli_meals/pages/tabs_page.dart';
 import 'package:deli_meals/providers/meal_provider.dart';
+import 'package:deli_meals/providers/settings_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -29,10 +30,6 @@ class _MyAppState extends State<MyApp> {
       'vegetarian': false,
     };
 
-    void setFilters(Map<String, bool> filtersData) {
-      setState(() => _filters = filtersData);
-    }
-
     return MultiProvider(
       providers: [
         ChangeNotifierProvider<CategoryProvider>(
@@ -40,6 +37,9 @@ class _MyAppState extends State<MyApp> {
         ),
         ChangeNotifierProvider<MealProvider>(
           create: (_) => MealProvider(),
+        ),
+        ChangeNotifierProvider<SettingsProvider>(
+          create: (_) => SettingsProvider(),
         ),
       ],
       child: MaterialApp(
@@ -66,9 +66,7 @@ class _MyAppState extends State<MyApp> {
           AppRoutes.homePage: (ctx) => const TabsPage(),
           AppRoutes.mealsPage: (ctx) => const MealsPage(),
           AppRoutes.mealDetailPage: (ctx) => const MealDetailPage(),
-          AppRoutes.settingsPage: (ctx) => SettingsPage(
-                handleSaveSettings: setFilters,
-              ),
+          AppRoutes.settingsPage: (ctx) => const SettingsPage(),
         },
         onGenerateRoute: (settings) {
           // In case of going to a route that is not listed

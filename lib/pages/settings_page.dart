@@ -1,32 +1,25 @@
 import 'package:deli_meals/components/main_drawer.dart';
 import 'package:deli_meals/components/settings_switch_tile.dart';
+import 'package:deli_meals/providers/settings_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class SettingsPage extends StatefulWidget {
-  final void Function(Map<String, bool>) handleSaveSettings;
-
-  const SettingsPage({required this.handleSaveSettings, super.key});
+  const SettingsPage({super.key});
 
   @override
   State<SettingsPage> createState() => _SettingsPageState();
 }
 
 class _SettingsPageState extends State<SettingsPage> {
-  bool _glutenFree = false;
-  bool _vegetarian = false;
-  bool _vegan = false;
-  bool _lactoseFree = false;
-
   @override
   Widget build(BuildContext context) {
+    final provider = Provider.of<SettingsProvider>(context, listen: false);
+    final settings = provider.settings;
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Your settings'),
-        actions: [
-          IconButton(
-              onPressed: widget.handleSaveSettings,
-              icon: const Icon(Icons.save))
-        ],
       ),
       drawer: const MainDrawer(),
       body: SafeArea(
@@ -49,33 +42,41 @@ class _SettingsPageState extends State<SettingsPage> {
                   title: 'Gluten-Free',
                   subtitle: 'Only include gluten free meals',
                   handleUpdateValue: (newValue) {
-                    setState(() => _glutenFree = newValue);
+                    setState(() {
+                      provider.updateSettings({'gluten': newValue});
+                    });
                   },
-                  currentValue: _glutenFree,
+                  currentValue: settings.gluten,
                 ),
                 SettingsSwitchTile(
                   title: 'Lactose-Free',
                   subtitle: 'Only include lactose free meals',
                   handleUpdateValue: (newValue) {
-                    setState(() => _lactoseFree = newValue);
+                    setState(() {
+                      provider.updateSettings({'lactoseFree': newValue});
+                    });
                   },
-                  currentValue: _lactoseFree,
+                  currentValue: settings.lactoseFree,
                 ),
                 SettingsSwitchTile(
                   title: 'Vegetarian-Free',
                   subtitle: 'Only include vegetarian free meals',
                   handleUpdateValue: (newValue) {
-                    setState(() => _vegetarian = newValue);
+                    setState(() {
+                      provider.updateSettings({'vegetarian': newValue});
+                    });
                   },
-                  currentValue: _vegetarian,
+                  currentValue: settings.vegetarian,
                 ),
                 SettingsSwitchTile(
                   title: 'Vegan-Free',
                   subtitle: 'Only include vegan free meals',
                   handleUpdateValue: (newValue) {
-                    setState(() => _vegan = newValue);
+                    setState(() {
+                      provider.updateSettings({'vegan': newValue});
+                    });
                   },
-                  currentValue: _vegan,
+                  currentValue: settings.vegan,
                 ),
               ],
             ))
