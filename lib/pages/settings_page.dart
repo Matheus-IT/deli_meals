@@ -59,8 +59,8 @@ class _SettingsPageState extends State<SettingsPage> {
                   currentValue: settings.lactoseFree,
                 ),
                 SettingsSwitchTile(
-                  title: 'Vegetarian-Free',
-                  subtitle: 'Only include vegetarian free meals',
+                  title: 'Vegetarian',
+                  subtitle: 'Only include vegetarian meals',
                   handleUpdateValue: (newValue) {
                     setState(() {
                       provider.updateSettings({'vegetarian': newValue});
@@ -69,8 +69,8 @@ class _SettingsPageState extends State<SettingsPage> {
                   currentValue: settings.vegetarian,
                 ),
                 SettingsSwitchTile(
-                  title: 'Vegan-Free',
-                  subtitle: 'Only include vegan free meals',
+                  title: 'Vegan',
+                  subtitle: 'Only include vegan meals',
                   handleUpdateValue: (newValue) {
                     setState(() {
                       provider.updateSettings({'vegan': newValue});
