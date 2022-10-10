@@ -24,10 +24,21 @@ class Category extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.all(15),
         decoration: BoxDecoration(
-          gradient: LinearGradient(
-            colors: [categoryModel.color.withOpacity(0.7), categoryModel.color],
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
+          color: Theme.of(context).canvasColor,
+          boxShadow: const [
+            BoxShadow(
+              color: Colors.black54,
+              blurRadius: 10.0, // soften the shadow
+              spreadRadius: 1.0, //extend the shadow
+              offset: Offset(
+                5.0, // Move to right 10  horizontally
+                5.0, // Move to bottom 10 Vertically
+              ),
+            )
+          ],
+          border: Border.all(
+            color: Colors.red[300]!,
+            width: 3.0,
           ),
           borderRadius: BorderRadius.circular(15),
         ),
